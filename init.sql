@@ -43,10 +43,10 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 CREATE TABLE public.code (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     code character varying(10) NOT NULL,
-    game_id integer,
-    player_id integer,
+    game_id bigint,
+    player_id bigint,
     is_active boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -56,7 +56,6 @@ CREATE TABLE public.code (
 ALTER TABLE public.code OWNER TO admin;
 
 CREATE SEQUENCE public.code_id
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -70,7 +69,7 @@ ALTER SEQUENCE public.code_id OWNED BY public.code.id;
 
 
 CREATE TABLE public.game (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     name character varying(100) NOT NULL,
     is_deleted boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -81,8 +80,8 @@ CREATE TABLE public.game (
 ALTER TABLE public.game OWNER TO admin;
 
 CREATE TABLE public.game_detail (
-    id integer NOT NULL,
-    game_id integer,
+    id bigint NOT NULL,
+    game_id bigint,
     description character varying(500) NOT NULL,
     genre character varying(25) NOT NULL,
     is_deleted boolean NOT NULL,
@@ -94,7 +93,6 @@ CREATE TABLE public.game_detail (
 ALTER TABLE public.game_detail OWNER TO admin;
 
 CREATE SEQUENCE public.game_detail_id
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -108,7 +106,6 @@ ALTER SEQUENCE public.game_detail_id OWNED BY public.game_detail.id;
 
 
 CREATE SEQUENCE public.game_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -122,7 +119,7 @@ ALTER SEQUENCE public.game_id_seq OWNED BY public.game.id;
 
 
 CREATE TABLE public.player (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     nick_name character varying(25) NOT NULL,
     password character varying(100) NOT NULL,
     is_deleted boolean NOT NULL,
@@ -134,16 +131,15 @@ CREATE TABLE public.player (
 ALTER TABLE public.player OWNER TO admin;
 
 CREATE TABLE public.player_game (
-    id integer NOT NULL,
-    player_id integer,
-    game_id integer
+    id bigint NOT NULL,
+    player_id bigint,
+    game_id bigint
 );
 
 
 ALTER TABLE public.player_game OWNER TO admin;
 
 CREATE SEQUENCE public.player_game_id
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -157,7 +153,6 @@ ALTER SEQUENCE public.player_game_id OWNED BY public.player_game.id;
 
 
 CREATE SEQUENCE public.player_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
