@@ -78,6 +78,11 @@ END;
 $$;
 ```
 
+* Use following regex to clean the SQL file.
+```
+^--.*\n{1,}
+```
+
 * Refer to the documentation provided in the [`core-docker-config`](https://github.com/ahmettoguz/core-docker-config) project for the system startup commands.
 
 <br/>
